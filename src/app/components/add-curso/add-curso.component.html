@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Nuevo Curso</span>
+    <form (ngSubmit)="onGuardarCurso(formNew)" #formNew="ngForm" class="col s6">
+      <div class="row">
+        <div class="input-field col s6">
+          <input [(ngModel)]="curso.nombre" #nombre="ngModel" type="text" name="nombre" id="nombre" placeholder="Nombre del Curso" minlength="10" maxlength="40" required>
+          <label>Nombre</label>
+          <div *ngIf="nombre.touched && !nombre.valid">
+            <div *ngIf="nombre.errors.required" style="color: red;">Nombre es requerido</div>
+            <div *ngIf="nombre.errors.minlength" style="color: red;">Nombre debe ser al menos de {{nombre.errors.minlength.requiredLength}} caracteres.</div>
+          </div>
+        </div>
+        <div class="input-field col s6">
+            <input [(ngModel)]="curso.descripcion" #descripcion="ngModel" type="text" name="descripcion" 
+            id="descripcion" placeholder="Descripcion del Curso" minlength="15" maxlength="300" required>
+            <label>Descripcion</label>
+            <div *ngIf="descripcion.touched && !descripcion.valid">
+              <div *ngIf="descripcion.errors.required" style="color: red;">Descripcion es requerido</div>
+              <div *ngIf="descripcion.errors.minlength" style="color: red;">Descripcion debe ser al menos de {{descripcion.errors.minlength.requiredLength}} caracteres.</div>
+            </div>
+        </div>
+        <div class="input-field col s6">
+            <input [(ngModel)]="curso.formador" #formador="ngModel" type="text" name="formador" 
+            id="formador" placeholder="Profesor" minlength="10" maxlength="45" required> 
+            <label>Profesor</label>
+            <div *ngIf="formador.touched && !formador.valid">
+              <div *ngIf="formador.errors.required" style="color: red;">Profesor es requerido</div>
+              <div *ngIf="formador.errors.minlength" style="color: red;">Profesor debe ser al menos de {{formador.errors.minlength.requiredLength}} caracteres.</div>
+            </div>
+        </div>
+        <div class="input-field col s6">
+            <input [(ngModel)]="curso.precio" #precio="ngModel" type="text" name="precio" id="precio" 
+            placeholder="Precio del curso" minlength="2" maxlength="7" required>
+            <label>Precio</label>
+            <div *ngIf="precio.touched && !precio.valid">
+              <div *ngIf="precio.errors.required" style="color: red;">Precio es requerido</div>
+              <div *ngIf="precio.errors.minlength" style="color: red;">Precio debe ser al menos de {{precio.errors.minlength.requiredLength}} caracteres.</div>
+            </div>
+        </div>
+        <div class="input-field col s6">
+            <input [(ngModel)]="curso.idioma" #idioma="ngModel" type="text" name="idioma" id="idioma" 
+            placeholder="Idioma del curso" minlength="5" maxlength="40" pattern="Ingles|Español" required>
+            <label>Idioma</label>
+            <div *ngIf="idioma.touched && !idioma.valid">
+              <div *ngIf="idioma.errors.required" style="color: red;">Idioma es requerido</div>          
+              <div *ngIf="idioma.errors.pattern" style="color: red;">Idioma debe ser Ingles o Español</div>
+            </div>
+        </div>
+        <div class="input-field col s6">
+            <input [(ngModel)]="curso.tecnologia" #tecnologia="ngModel" type="text" name="tecnologia" 
+            id="tecnologia" placeholder="tecnologia" minlength="2" maxlength="20" required>
+            <label>Tecnologia</label>
+            <div *ngIf="tecnologia.touched && !tecnologia.valid">
+              <div *ngIf="tecnologia.errors.required" style="color: red;">Tecnologia es requerido</div>
+              <div *ngIf="tecnologia.errors.minlength" style="color: red;">Tecnologia debe ser al menos de {{tecnologia.errors.minlength.requiredLength}} caracteres.</div>
+            </div>
+        </div>
+        <button type="submit" class="btn waves-effect waves-light orange right">Guardar
+          <i class="material-icons">add_circle</i>
+        </button>
+      </div>
+      
+    </form>
+  </div>
+</div>
